@@ -1,0 +1,75 @@
+.summary-card {
+    padding: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+}
+
+.summary-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.summary-details div {
+    margin: 0.2rem 0;
+}
+
+.summary-actions {
+    margin-top: 0.7rem;
+    font-weight: 500;
+    color: #0070d2;
+    cursor: pointer;
+}
+
+.schedule-section {
+    border-top: 1px solid #dcdcdc;
+    padding-top: 1rem;
+}
+
+.emi-entry {
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.badge {
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.badge.paid {
+    color: green;
+}
+
+.badge.pending {
+    color: #f39c12;
+}
+
+.badge.overdue {
+    color: red;
+}
+.badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.badge-paid {
+    background: #28a745; color: white;
+}
+.badge-pending {
+    background: #ffc107; color: black;
+}
+.badge-overdue {
+    background: #dc3545; color: white;
+}
+.summary-card {
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    transition: box-shadow 0.2s ease;
+}
+.summary-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.summary-header {
+    font-weight: 600;
+}

@@ -1,0 +1,102 @@
+<template>
+    <lightning-card title="Create Portal User" icon-name="standard:users">
+        <div class="slds-p-around_medium">
+
+            <lightning-layout multiple-rows>
+                <!-- First Name -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-input 
+                        label="First Name" 
+                        value={firstName}
+                        data-field="firstName"
+                        onchange={handleChange}
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- Last Name -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-input 
+                        label="Last Name" 
+                        value={lastName}
+                        data-field="lastName"
+                        onchange={handleChange}
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- Email -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-input 
+                        type="email" 
+                        label="Email" 
+                        value={email}
+                        data-field="email"
+                        onchange={handleChange}
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- Username -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-input 
+                        label="Username" 
+                        value={username}
+                        data-field="username"
+                        onchange={handleChange}
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- Alias -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-input 
+                        label="Alias" 
+                        value={alias}
+                        data-field="alias"
+                        onchange={handleChange}
+                        maxlength="8"
+                        required>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <!-- License Picklist -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-combobox 
+                        label="User License"
+                        value={selectedLicense}
+                        options={licenseOptions}
+                        onchange={handleLicenseChange}
+                        required>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <!-- Profile Picklist -->
+                <lightning-layout-item size="12" small-device-size="6" padding="around-small">
+                    <lightning-combobox 
+                        label="Profile"
+                        value={selectedProfile}
+                        options={profileOptions}
+                        onchange={handleProfileChange}
+                        required>
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <div class="slds-m-top_medium slds-align_absolute-center">
+                <lightning-button 
+                    label="Create User"
+                    variant="brand"
+                    onclick={handleSubmit}
+                    class="slds-m-right_small">
+                </lightning-button>
+                <lightning-button 
+                    label="Reset" 
+                    variant="neutral"
+                    onclick={resetForm}>
+                </lightning-button>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Add Opportunity Products With Discount">
+        <div class="slds-p-around_medium">
+            <lightning-combobox
+                name="product"
+                label="Select Product"
+                value={selectedProductId}
+                placeholder="Select a Product"
+                options={productOptions}
+                onchange={handleProductChange}>
+            </lightning-combobox>
+
+            <lightning-input type="number" label="Quantity" value={quantity} onchange={handleQuantityChange}></lightning-input>
+            <lightning-input type="number" label="Sales Price" value={salesPrice} onchange={handleSalesPriceChange}></lightning-input>
+            <lightning-input type="number" label="Discount (%)" value={discount} onchange={handleDiscountChange}></lightning-input>
+
+            <lightning-button label="Add Product" variant="brand" onclick={handleAddProduct}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

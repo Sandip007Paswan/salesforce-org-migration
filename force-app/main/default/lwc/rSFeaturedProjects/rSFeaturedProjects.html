@@ -1,0 +1,27 @@
+<template>
+  <section class="featured-projects">
+    <h1>Featured Properties</h1>
+
+    <template if:true={visibleProjects.length}>
+      <div class="cards">
+        <template for:each={visibleProjects} for:item="project">
+          <div key={project.Id} class="card" data-id={project.Id} onclick={handleClick} role="button" tabindex="0">
+            <div class="image-container">
+              <img src={project.Project_Image__c} alt={project.Name} />
+              <span class="badge">{project.Status__c}</span>
+            </div>
+            <div class="content">
+              <h2>{project.Name}</h2>
+              <p>{project.Location__c}</p>
+              <p>{project.Type__c} | {project.Total_Units__c} Units</p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <template if:true={error}>
+      <p class="error">Error loading featured projects: {error}</p>
+    </template>
+  </section>
+</template>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Project List</masterLabel>
+    <description>Displays list of projects filtered by status</description>
+    <targets>
+    
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Page_Layout</target>
+        <target>lightningCommunity__Theme_Layout</target>
+    </targets>
+
+    <!-- Declare the status attribute so it can be set in Lightning App Builder -->
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="status" type="String" label="Project Status Filter(e.g. Ongoing, Completed, Upcoming)" description="Filter projects by status (e.g. Ongoing, Completed, Upcoming)" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

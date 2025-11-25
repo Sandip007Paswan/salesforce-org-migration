@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Balance_Amount__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    ISBLANK(Amount__c),
+    0,
+    IF(
+        ISBLANK(Paid_Amount__c),
+        Amount__c,
+        MAX(Amount__c - Paid_Amount__c, 0)
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Balance Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

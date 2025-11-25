@@ -1,0 +1,96 @@
+<template>
+    <button class="chat-icon" onclick={toggleChat}>
+        <template if:true={isInitializing}>
+            <div class="avatar-loader">
+                <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+            </div>
+        </template>
+        <template if:false={isInitializing}>
+            <img src="https://valuehub-demo.my.salesforce.com/servlet/servlet.ImageServer?id=015KY000000gyKF&oid=00DKY000006BaBb&lastMod=1749643989000" alt="Agent" class="avatar-icon" />
+        </template>
+    </button>
+
+    <template if:true={chatOpen}>
+        <div class="chat-window" style="height: 500px; border-radius: 16px;">
+            <div class="chat-header">
+                <div class="agent-info">
+                    <img src="https://valuehub-demo.my.salesforce.com/servlet/servlet.ImageServer?id=015KY000000gyKF&oid=00DKY000006BaBb&lastMod=1749643989000" alt="Agent Avatar" class="agent-avatar">
+                    <span class="agent-name">Weave Agent</span>
+                </div>
+
+                <div class="header-actions">
+                    <button class="config-toggle-button" onclick={toggleConfig} title="Configuration">
+                        <lightning-icon icon-name="utility:settings" alternative-text="Settings" size="small"></lightning-icon>
+                    </button>
+                    <button class="close-session-button" onclick={endSession} title="End Session">
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" size="small"></lightning-icon>
+                    </button>
+                </div>
+            </div>
+
+            <template if:true={showConfig}>
+                <div class="config-popup">
+                    <div class="config-header">
+                        <span>Configuration</span>
+                        <button class="config-close" onclick={toggleConfig}>×</button>
+                    </div>
+                    <div class="config-body">
+                        <div class="config-item">
+                            <span>Enable Conversational Bot</span>
+                            <lightning-input type="toggle" checked={isConversationEnabled} onchange={toggleConversation}></lightning-input>
+                        </div>
+                        <div class="config-item">
+                            <span>Enable AI Agent Voice</span>
+                            <lightning-input type="toggle" checked={isTtsEnabled} disabled={disableDependent} onchange={toggleTts}></lightning-input>
+                        </div>
+                        <div class="config-item">
+                            <span>Auto On Microphone for input</span>
+                            <lightning-input type="toggle" checked={autoMicEnabled} disabled={disableDependent} onchange={toggleAutoMic}></lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <div class="chat-body">
+                <template for:each={formattedMessages} for:item="msg">
+                    <div key={msg.id} class={msg.cssClass}>
+                        <lightning-formatted-rich-text value={msg.text}></lightning-formatted-rich-text>
+                    </div>
+                </template>
+
+                <template if:true={isLoading}>
+                    <div class="agent-message typing-indicator">
+                        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    </div>
+                </template>
+
+                <template if:true={isListening}>
+                    <div class="agent-message listening-indicator">🎤 Listening...</div>
+                </template>
+            </div>
+
+            <div class="chat-footer">
+                <div class="chat-footer-content" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 10px;">
+                    <lightning-input 
+                        class="chat-input unified-input"
+                        variant="label-hidden"
+                        value={userInput} 
+                        onchange={handleInputChange} 
+                        placeholder="Type your message">
+                    </lightning-input>
+
+                    <lightning-button 
+                        class="submit-button unified-input" 
+                        variant="brand" 
+                        label="Submit" 
+                        onclick={sendMessage}>
+                    </lightning-button>
+
+                    <button class="mic-button unified-input" onclick={toggleMic} title={micTooltip}>
+                        <lightning-icon icon-name={micIcon} alternative-text="Mic" size="small"></lightning-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

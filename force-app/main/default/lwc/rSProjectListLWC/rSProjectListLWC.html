@@ -1,0 +1,31 @@
+<template>
+  <div class="project-list">
+    <template if:true={projects.length}>
+      <div class="grid">
+        <template for:each={projects} for:item="project">
+          <div key={project.Id} class="card" onclick={handleClick} data-id={project.Id}>
+            <img src={project.Project_Image__c} alt={project.Name} class="card-image" />
+            <div class="card-body">
+              <h2>{project.Name}</h2>
+              <p class="meta">
+                <template if:true={project.Location__c}>
+                  <span>{project.Location__c}</span> •
+                </template>
+                <span>{project.Status__c}</span>
+              </p>
+              <p class="details">
+                {project.Type__c} | {project.Total_Units__c} Units
+              </p>
+              <p class="eta">
+                <!-- ETA: <lightning-formatted-date value={project.Completion_ETA__c}></lightning-formatted-date> -->
+              </p>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    <template if:true={error}>
+      <p class="error">{error}</p>
+    </template>
+  </div>
+</template>

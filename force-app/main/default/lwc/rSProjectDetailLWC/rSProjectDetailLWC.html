@@ -1,0 +1,79 @@
+<template>
+  <template if:true={project}>
+    <div class="project-container">
+      <div class="image-section">
+        <img src={project.Project_Image__c} alt={project.Name} class="project-image" />
+      </div>
+
+      <div class="details-section">
+        <h1 class="project-title">{project.Name}</h1>
+
+        <ul class="project-info">
+          <li><strong>📍 Location:</strong> {project.Location__c}</li>
+          <li><strong>🏗️ Type:</strong> {project.Type__c}</li>
+          <li><strong>🚦 Status:</strong> {project.Status__c}</li>
+          <li><strong>🏢 Total Units:</strong> {project.Total_Units__c}</li>
+          <li><strong>🚀 Launch Date:</strong> {launchDateFormatted}</li>
+          <li><strong>🕓 Completion ETA:</strong> {completionETA}</li>
+        </ul>
+
+        <p class="project-description">{project.Description__c}</p>
+
+        <!-- CTA -->
+        <!-- <div class="cta-section">
+          <button class="enquire-btn" data-id={project.Id} onclick={handleEnquireClick}>
+              📩 Enquire Now
+          </button>
+        </div> -->
+
+      </div>
+    </div>
+  </template>
+  <template if:true={properties}>
+    <div class="property-section">
+      <h2 class="section-title">🏘️ Available Properties Under This Project</h2>
+      <div class="property-grid">
+        <template for:each={properties} for:item="prop">
+          <div key={prop.Id} class="property-card" >
+            <template if:true={prop.imageUrl}>
+              <img src={prop.imageUrl} alt={prop.Name} class="property-image" />
+            </template>
+            <div class="property-info">
+              <h3 class="property-name">{prop.Name}</h3>
+              <p class="property-meta">🏷️ <strong>Unit No:</strong> {prop.Unit_No__c}</p>
+              <p class="property-meta">💰 <strong>Price:</strong> ₹{prop.Price__c}</p>
+              <p class="property-meta">📐 <strong>Carpet Area:</strong> {prop.Carpet_Area__c} sqft</p>
+              <p class="property-meta">🚦 <strong>Status:</strong> {prop.Status__c}</p>
+
+              <!-- Property-level Enquire button -->
+              <button class="enquire-btn"
+            data-project-id={project.Id}
+            data-property-id={prop.Id}
+            onclick={handlePropertyEnquiry}>
+      📩 Enquire for this Property
+    </button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+
+  <template if:true={error}>
+    <div class="error-box">{error}</div>
+  </template>
+  <template if:true={showModal}>
+  <section class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      
+     <c-r-s-create-lead
+        project-id={selectedProjectId}
+        property-id={selectedPropertyId}
+        onclosemodal={closeModal}>
+      </c-r-s-create-lead>
+    </div>
+  </section>
+</template>
+
+
+</template>

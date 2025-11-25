@@ -1,0 +1,241 @@
+/* Filter section padding */
+.filter-section {
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+/* Main container flex for map + properties */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 70vh;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+/* Map pane on left: 30% width */
+.map-pane {
+    flex: 0 0 30%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+/* lightning-map fills container */
+.map-pane lightning-map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Properties pane on right: 70% width */
+.prop-pane {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+    height: 100%;
+    padding-bottom: 1rem;
+}
+
+/* Webkit scrollbar customization */
+.prop-pane::-webkit-scrollbar {
+    width: 8px;
+}
+.prop-pane::-webkit-scrollbar-track {
+    background: transparent;
+}
+.prop-pane::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Grid layout — responsive columns */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Card styling */
+.property-card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Carousel section */
+.custom-carousel {
+    position: relative;
+    height: 180px;
+    background-color: #f4f4f4;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+/* Carousel nav buttons */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+}
+
+.prev-button,
+.next-button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* No image fallback */
+.no-image-placeholder {
+    height: 180px;
+    background-color: #f9fafb;
+    border: 1px dashed #ccc;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Property info */
+.property-info {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+.property-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.property-status,
+.property-area,
+.property-price {
+    margin-top: 0.15rem;
+    color: #555;
+}
+
+/* Property price currency symbol style placeholder (if needed) */
+.property-price::before {
+    margin-right: 2px;
+    font-weight: bold;
+}
+
+/* Filter container layout */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f3f2f2;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-container .slds-col {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+/* Medium and above: side-by-side filter inputs */
+@media (min-width: 768px) {
+    .filter-container .slds-col {
+        flex: 0 0 24%;
+    }
+}
+
+/* Mobile: full width filter inputs */
+@media (max-width: 767px) {
+    .filter-container .slds-col {
+        flex: 0 0 100%;
+    }
+}
+
+/* Background styling */
+.custom-background {
+    background-color: #f4f6f9;
+    padding: 10px;
+}
+
+/* ========================== */
+/*     MOBILE RESPONSIVE      */
+/* ========================== */
+
+@media (max-width: 767px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .map-pane,
+    .prop-pane {
+        flex: 1 1 100%;
+        max-height: none;
+        height: auto;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .property-info {
+        font-size: 0.75rem;
+    }
+
+    .property-name {
+        font-size: 1rem;
+    }
+
+    .prev-button,
+    .next-button {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .map-pane lightning-map {
+        height: 300px;
+    }
+}

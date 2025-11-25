@@ -1,0 +1,227 @@
+/* FAB Button */
+.launcher-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #01b6f0, #028ac6);
+    color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    cursor: pointer;
+    z-index: 10000;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.launcher-fab:hover {
+    background: linear-gradient(135deg, #028ac6, #01b6f0);
+    box-shadow: 0 8px 24px rgba(1,182,240,0.30);
+}
+
+/* Modal Base */
+.custom-modal__container {
+    min-width: 720px;
+    max-width: 95vw;
+    border-radius: 16px;
+    overflow: visible;
+    box-shadow: 0 8px 32px rgba(1,182,240,0.18);
+}
+.custom-modal__content {
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Circle Container */
+.circle-fab-container {
+    position: relative;
+    width: 480px;
+    height: 360px;
+    margin: 20px 0 30px 0;
+}
+
+/* Circular Action Buttons */
+.circle-fab-action {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #01b6f0;
+    border: none;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 2px 8px rgba(1,182,240,0.10);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+}
+.circle-fab-action:hover {
+    background: #f0faff;
+    box-shadow: 0 6px 20px rgba(1,182,240,0.18);
+    transform: scale(1.08);
+    z-index: 2;
+}
+
+/* Icon and Label in Button */
+.modal-fab-icon {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.modal-fab-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #028ac6;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Modal Layout Flex */
+.modal-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.custom-modal__content.modal-flex {
+    min-height: 380px;
+}
+
+/* Right Panel Container */
+.action-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Toggle Button */
+.toggle-list-btn {
+    margin-bottom: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #028ac6;
+    color: white;
+    cursor: pointer;
+}
+
+/* Action List Panel */
+.action-list {
+    display: none;
+    max-height: 250px;
+    overflow-y: auto;
+    width: 200px;
+    background: #f9fcff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 1px 5px rgba(0, 134, 179, 0.1);
+}
+.action-list.visible {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* List Item */
+.action-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    background: #ffffff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #e0eaf2;
+    transition: background 0.2s ease;
+}
+.action-item:hover {
+    background: #eef9ff;
+}
+
+/* Add/Remove Buttons */
+.action-item button {
+    background: none;
+    border: none;
+    color: #0176d3;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.action-item button:hover {
+    background: rgba(1, 182, 240, 0.08);
+}
+
+/* Optional: Create New dropdown (if used later) */
+.modal-fab-create-new {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(1,182,240,0.10);
+    padding: 4px 8px;
+    margin-top: 10px;
+}
+.modal-fab-search-select {
+    border: 1px solid #cfd8dc;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 15px;
+    margin-right: 8px;
+    background: #f8fafd;
+    color: #028ac6;
+    outline: none;
+    min-width: 100px;
+}
+.modal-fab-create-new .modal-fab-action {
+    min-width: 90px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: white;
+}
+
+.modal-close-button {
+   line-height: 1;
+    width: 2rem;
+    height: 2rem;
+    border: azure;
+    background: whitesmoke;
+    color: #b32b2b;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.modal-close-button:hover {
+    background: rgba(220, 32, 32, 0.794);
+    border-radius: 50%;
+	border: rgba(0, 0, 0, 0.295);
+}

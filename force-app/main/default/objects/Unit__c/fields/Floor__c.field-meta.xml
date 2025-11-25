@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Floor__c</fullName>
+    <externalId>false</externalId>
+    <label>Floor</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1st Floor</fullName>
+                <default>false</default>
+                <label>1st Floor</label>
+            </value>
+            <value>
+                <fullName>2nd Floor</fullName>
+                <default>false</default>
+                <label>2nd Floor</label>
+            </value>
+            <value>
+                <fullName>3rd Floor</fullName>
+                <default>false</default>
+                <label>3rd Floor</label>
+            </value>
+            <value>
+                <fullName>4th Floor</fullName>
+                <default>false</default>
+                <label>4th Floor</label>
+            </value>
+            <value>
+                <fullName>5th Floor</fullName>
+                <default>false</default>
+                <label>5th Floor</label>
+            </value>
+            <value>
+                <fullName>6th Floor</fullName>
+                <default>false</default>
+                <label>6th Floor</label>
+            </value>
+            <value>
+                <fullName>7th Floor</fullName>
+                <default>false</default>
+                <label>7th Floor</label>
+            </value>
+            <value>
+                <fullName>8th Floor</fullName>
+                <default>false</default>
+                <label>8th Floor</label>
+            </value>
+            <value>
+                <fullName>9th Floor</fullName>
+                <default>false</default>
+                <label>9th Floor</label>
+            </value>
+            <value>
+                <fullName>10th Floor</fullName>
+                <default>false</default>
+                <label>10th Floor</label>
+            </value>
+            <value>
+                <fullName>11th Floor</fullName>
+                <default>false</default>
+                <label>11th Floor</label>
+            </value>
+            <value>
+                <fullName>12th Floor</fullName>
+                <default>false</default>
+                <label>12th Floor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

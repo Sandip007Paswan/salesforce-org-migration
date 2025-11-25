@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Start_Time__c</columns>
+    <columns>Slot_Type__c</columns>
+    <columns>RM__c</columns>
+    <columns>Start_Time_Text__c</columns>
+    <columns>Slot_ID__c</columns>
+    <columns>Is_Booked__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RM__c</field>
+        <operation>equals</operation>
+        <value>RM3 Advisor</value>
+    </filters>
+    <label>All</label>
+</ListView>

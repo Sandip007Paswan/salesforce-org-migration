@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Quote Line Items" icon-name="standard:quote_line_item">
+        <lightning-datatable
+            key-field="Id"
+            data={quoteLineItems}
+            columns={columns}
+            draft-values={draftValues}
+            onsave={handleSave}
+            onrowaction={handleRowAction} 
+            hide-checkbox-column>
+        </lightning-datatable>
+    </lightning-card>
+</template>

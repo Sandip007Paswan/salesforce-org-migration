@@ -1,0 +1,26 @@
+.custom-container{
+	color : black;
+}
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.badge-paid {
+    background-color: #d4f4dd;
+    color: #2e7d32;
+}
+.badge-pending {
+    background-color: #fff4cc;
+    color: #b68400;
+}
+.badge-overdue {
+    background-color: #ffebee;
+    color: #c62828;
+}
+.uniform-card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px; /* Ensures consistent height */
+    justify-content: space-between;
+}

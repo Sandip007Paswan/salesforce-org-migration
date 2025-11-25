@@ -1,0 +1,59 @@
+<template>
+    <div class="launcher-fab" onclick={toggleModal} title="Open Quick Launcher">⚡</div>
+
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open custom-modal">
+            <div class="slds-modal__container custom-modal__container">
+                <header class="slds-modal__header modal-header-custom">
+                    <h2 class="slds-text-heading_medium">Quick Launcher</h2>
+                    <button class="slds-button slds-modal__close modal-close-button" title="Close" onclick={toggleModal}>×</button>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium custom-modal__content modal-flex">
+                    
+                   
+                    <div class="circle-fab-container">
+                        <template for:each={favoriteActionsWithStyle} for:item="action">
+                             <button key={action.value}
+                                    class="circle-fab-action"
+                                    style={action.style}
+                                    title={action.label}
+                                    data-value={action.value}
+                                    onclick={handleActionClick}>
+                                <lightning-icon icon-name={action.icon}
+                                                alternative-text={action.label}
+                                                size="small"
+                                                class="modal-fab-icon">
+                                </lightning-icon>
+                                <span class="modal-fab-label">{action.label}</span>
+                            </button>
+
+                        </template>
+                    </div>
+
+                  
+                    <div class="action-panel">
+                        <button class="toggle-list-btn" onclick={toggleListVisibility}>{toggleButtonLabel}</button>
+                        <div class={computedListClass}>
+                            <template for:each={computedActions} for:item="action">
+                                <div key={action.value} class="action-item">
+                                    <span>{action.label}</span>
+                                    <button onclick={toggleFavorite} data-value={action.value}>
+                                        <template if:true={action.isFavorite}>
+                                            <span>★ Remove</span>
+                                        </template>
+                                        <template if:false={action.isFavorite}>
+                                            <span>☆ Add</span>
+                                        </template>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

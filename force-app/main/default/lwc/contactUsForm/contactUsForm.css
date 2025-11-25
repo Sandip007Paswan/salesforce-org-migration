@@ -1,0 +1,35 @@
+:host {
+    display: block;
+}
+
+.slds-notify {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slds-theme_success {
+    background-color: #d4f4dd;
+    color: #0a6a35;
+    border: 1px solid #a3e3b1;
+}
+
+.slds-align_absolute-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+lightning-card {
+    --slds-c-card-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --slds-c-card-padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+lightning-button {
+    --slds-c-button-brand-color-background: #0070d2;
+    --slds-c-button-brand-color-border: #005fb2;
+    font-weight: bold;
+}

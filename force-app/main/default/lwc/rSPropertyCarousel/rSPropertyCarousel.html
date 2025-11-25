@@ -1,0 +1,107 @@
+<template>
+    <div class="filter-section slds-grid slds-wrap slds-gutters slds-p-around_medium">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <lightning-combobox
+                name="statusFilter"
+                label="Status"
+                value={selectedStatus}
+                placeholder="Select Status"
+                options={statusOptions}
+                onchange={handleStatusChange}>
+            </lightning-combobox>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <lightning-combobox
+                name="priceRange"
+                label="Price Range"
+                value={selectedPriceRange}
+                placeholder="Select Price Range"
+                options={priceRangeOptions}
+                onchange={handlePriceRangeChange}>
+            </lightning-combobox>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <lightning-input
+                type="text"
+                label="City"
+                value={cityFilter}
+                onchange={handleCityChange}>
+            </lightning-input>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <lightning-input
+                type="text"
+                label="Country"
+                value={countryFilter}
+                onchange={handleCountryChange}>
+            </lightning-input>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <lightning-combobox
+                name="sortPrice"
+                label="Sort by Price"
+                value={sortDirection}
+                options={sortOptions}
+                onchange={handleSortChange}>
+            </lightning-combobox>
+        </div>
+    </div>
+
+    <div class="main-container slds-grid slds-wrap slds-gutters">
+        <div class="map-pane slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+            <lightning-map
+                map-markers={filteredMapMarkers}
+                zoom-level="5"
+                markers-title="Filtered Properties"
+                selected-marker-value={selectedMarkerId}
+                onmarkerselect={handleMarkerSelect}
+                list-view="hidden"
+                center={center}>
+            </lightning-map>
+        </div>
+
+        <div class="prop-pane slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+            <template if:true={filteredProperties.length}>
+                <div class="property-grid">
+                    <template for:each={filteredProperties} for:item="property">
+                        <div key={property.id} class="property-card">
+                            <template if:true={property.images.length}>
+                                <div class="custom-carousel">
+                                    <img src={property.currentImage} class="carousel-image" alt="Property Image" data-id={property.id} onclick={handleImageClick} style="cursor:pointer;" />
+
+                                    <div class="carousel-controls">
+                                        <button class="prev-button" data-id={property.id} onclick={handlePrev}>&lt;</button>
+                                        <button class="next-button" data-id={property.id} onclick={handleNext}>&gt;</button>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template if:false={property.images.length}>
+                                <div class="no-image-placeholder slds-text-align_center slds-p-around_medium">
+                                    No Images Available
+                                </div>
+                            </template>
+
+                            <div class="property-info">
+                                <div class="property-name">{property.name}</div>
+                                <div class="property-price">Price: ₹{property.price}</div>
+                                <div class="property-status">Status: {property.status}</div>
+                                <div class="property-area">Carpet Area: {property.carpetArea}</div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template if:false={filteredProperties.length}>
+                <div class="slds-text-align_center slds-p-around_medium">
+                    <strong>No properties found matching the selected criteria.</strong>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

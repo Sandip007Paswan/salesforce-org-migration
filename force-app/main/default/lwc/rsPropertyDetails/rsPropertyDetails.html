@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title={project.Name} if:true={project} class="slds-card_boundary">
+        <div class="slds-grid slds-wrap slds-p-around_medium">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                <img src={project.Project_Image__c} alt="Project Image" class="project-image" />
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-p-left_medium">
+                <p><strong>Location:</strong> {project.Location__c}</p>
+                <p><strong>Type:</strong> {project.Type__c}</p>
+                <p><strong>Status:</strong> {project.Status__c}</p>
+                <p><strong>Total Units:</strong> {project.Total_Units__c}</p>
+                <p><strong>Launch Date:</strong> {project.Launch_Date_c__c}</p>
+                <p><strong>Completion ETA:</strong> {project.Completion_ETA__c}</p>
+            </div>
+        </div>
+    </lightning-card>
+
+    <template if:true={properties}>
+        <lightning-layout multiple-rows class="slds-p-around_medium">
+           <template for:each={properties} for:item="prop">
+    <lightning-layout-item key={prop.Id} size="12" class="slds-p-around_medium">
+        <lightning-card title={prop.Name} class="property-card">
+            <div class="carousel-container slds-align_absolute-center slds-p-bottom_small">
+                <lightning-button-icon icon-name="utility:chevronleft"
+                                       alternative-text="Previous"
+                                       onclick={handlePrevImage}
+                                       data-id={prop.Id}
+                                       variant="bare"></lightning-button-icon>
+
+                <img src={prop.currentImage} alt="Property Image"
+                     class="property-image slds-m-horizontal_medium" />
+
+                <lightning-button-icon icon-name="utility:chevronright"
+                                       alternative-text="Next"
+                                       onclick={handleNextImage}
+                                       data-id={prop.Id}
+                                       variant="bare"></lightning-button-icon>
+            </div>
+
+            <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                <p><strong>Unit No:</strong> {prop.Unit_No__c}</p>
+                <p><strong>Status:</strong> {prop.Status__c}</p>
+                <p><strong>Price:</strong> ₹{prop.Price__c}</p>
+                <p><strong>Carpet Area:</strong> {prop.Carpet_Area__c} sq.ft.</p>
+                <p><strong>Location:</strong> {prop.Street__c}, {prop.City__c}, {prop.State__c}, {prop.Country__c}</p>
+            </div>
+        </lightning-card>
+    </lightning-layout-item>
+</template>
+        </lightning-layout>
+    </template>
+</template>

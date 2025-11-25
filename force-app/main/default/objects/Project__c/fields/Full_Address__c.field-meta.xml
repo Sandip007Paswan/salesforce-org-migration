@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Full_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(Address_Line_1__c),
+  &quot;&quot;,
+  Address_Line_1__c &amp; &quot;, &quot;
+) &amp;
+IF(
+  ISBLANK(Address_Line_2__c),
+  &quot;&quot;,
+  Address_Line_2__c &amp; &quot;, &quot;
+) &amp;
+IF(
+  ISBLANK(City__c),
+  &quot;&quot;,
+  City__c &amp; &quot;, &quot;
+) &amp;
+IF(
+  ISBLANK(State__c),
+  &quot;&quot;,
+  State__c &amp; &quot;, &quot;
+) &amp;
+IF(
+  ISBLANK(Postal_Code__c),
+  &quot;&quot;,
+  Postal_Code__c &amp; &quot;, &quot;
+) &amp;
+IF(
+  ISBLANK(Country__c),
+  &quot;&quot;,
+  Country__c
+)</formula>
+    <label>Full Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

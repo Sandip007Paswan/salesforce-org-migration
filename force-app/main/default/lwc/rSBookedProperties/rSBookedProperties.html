@@ -1,0 +1,65 @@
+<template>
+  <div class="container">
+    <h2 class="heading">📦 My Booked Properties</h2>
+
+    <template if:true={properties.length}>
+      <div class="property-grid">
+        <template for:each={properties} for:item="property">
+          <div key={property.Id} class="card">
+            <!-- Top Section: Image + Details Side by Side -->
+            <div class="row-section">
+              <!-- Left: Property Image -->
+              <div class="carousel">
+                <template if:true={property.PropertyImages.length}>
+                  <template for:each={property.PropertyImages} for:item="img">
+                    <img key={img.Id} src={img.Property_Image_URL__c} alt="Property Image" class="carousel-img" />
+                  </template>
+                </template>
+                <template if:false={property.PropertyImages.length}>
+                  <template if:true={property.ProjectDetails.Project_Image__c}>
+                    <img src={property.ProjectDetails.Project_Image__c} alt="Fallback Image" class="carousel-img" />
+                  </template>
+                  <template if:false={property.ProjectDetails.Project_Image__c}>
+                    <div class="carousel no-image">No Images Available</div>
+                  </template>
+                </template>
+              </div>
+
+              <!-- Right: Property Details -->
+              <div class="details">
+                <h3>{property.Name}</h3>
+                <p class="location">📍 {property.City__c}, {property.State__c}, {property.Country__c}</p>
+                <div class="property-info">
+                <p><strong>Status:</strong> {property.Status__c}</p>
+                <p><strong>Unit No:</strong> {property.Unit_No__c}</p>
+                <p><strong>Carpet Area:</strong> {property.Carpet_Area__c} sq.ft</p>
+                <p><strong>Saleable Area:</strong> {property.Saleable_Area__c} sq.ft</p>
+                </div>
+                <p class="price">💰 ₹ {property.Price__c}</p>
+              </div>
+            </div>
+
+            <!-- Bottom Section: Project Details Full Width -->
+            <template if:true={property.ProjectDetails}>
+              <div class="project-info">
+                <h4>🏗 Project Details</h4>
+                <p><strong>Name:</strong> {property.ProjectDetails.Name}</p>
+                <p><strong>Type:</strong> {property.ProjectDetails.Type__c}</p>
+                <p><strong>Status:</strong> {property.ProjectDetails.Status__c}</p>
+                <p><strong>ETA:</strong> {property.ProjectDetails.Completion_ETA__c}</p>
+                <p><strong>Total Units:</strong> {property.ProjectDetails.Total_Units__c}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <template if:false={properties.length}>
+      <div class="empty-state">
+        <lightning-icon icon-name="utility:home" alternative-text="No Properties" size="large"></lightning-icon>
+        <p class="empty-msg">You haven’t booked any properties yet.</p>
+      </div>
+    </template>
+  </div>
+</template>

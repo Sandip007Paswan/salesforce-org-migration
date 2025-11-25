@@ -1,0 +1,69 @@
+<template>
+    <!-- Custom Title in Center -->
+    <div class="slds-text-align_center slds-text-heading_medium slds-m-bottom_medium">
+        🏠 <strong>My Properties & Payments</strong>
+    </div>
+
+    <!-- Spinner -->
+    <template if:true={loading}>
+        <div class="slds-p-around_medium slds-text-align_center">
+            <lightning-spinner size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <!-- Property Summary Cards -->
+    <template if:true={summaries}>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={summaries} for:item="summary">
+                <div key={summary.propertyId} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                    <div class="summary-card slds-box slds-p-around_medium slds-m-around_x-small">
+
+                        <!-- 🖼 Property Image -->
+                        <template if:true={summary.imageUrl}>
+                            <div class="slds-m-bottom_small">
+                                <img src={summary.imageUrl} alt="Property Image" class="property-image"
+                                     style="width:100%; max-height:150px; object-fit:cover; border-radius:4px;" />
+                            </div>
+                        </template>
+
+                        <!-- Property Info -->
+                      <div class="summary-header slds-text-heading_small slds-m-bottom_small">
+    🏠 {summary.propertyName}
+</div>
+<div class="summary-subheader slds-text-body_small slds-text-color_weak slds-m-bottom_x-small">
+    🧱 Project: {summary.projectName}
+</div>
+
+                        <div class="summary-details slds-text-body_regular slds-m-bottom_small">
+                            <div><strong>Tower:</strong> {summary.tower} | <strong>Unit:</strong> {summary.unitNo}</div>
+                            <div><strong>Total:</strong> ₹{summary.totalPayable}</div>
+                            <div><strong>Paid:</strong> ₹{summary.totalPaid} | <strong>Pending:</strong> ₹{summary.pending}</div>
+                            <template if:true={summary.nextEmi}>
+                                <div class="slds-m-top_x-small">
+                                    <strong>Next EMI:</strong> ₹{summary.nextEmi.amount} (Due: {summary.nextEmi.dueDate})
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="summary-actions">
+                            <lightning-button 
+                                label="🔍 View Payment Details" 
+                                variant="brand-outline" 
+                                onclick={handleClick} 
+                                data-id={summary.propertyId}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <!-- Error -->
+    <template if:true={error}>
+        <div class="slds-p-around_medium slds-text-color_error">
+            {error}
+        </div>
+    </template>
+</template>

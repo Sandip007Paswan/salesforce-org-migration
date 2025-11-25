@@ -1,0 +1,97 @@
+:host {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+form {
+    background-color: #FAF9F0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.success-message,
+.error-message {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.success-message {
+    background-color: #e3fcef;
+    color: #04844b;
+    border: 1px solid #03c75a;
+}
+
+.error-message {
+    background-color: #fce8e6;
+    color: #d9413e;
+    border: 1px solid #d9413e;
+}
+
+lightning-input,
+lightning-combobox {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.file-upload-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+input[type="file"] {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+lightning-button {
+    width: 100%;
+}
+
+.budget-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.budget-container lightning-input {
+    flex: 1;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 350px;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.hidden {
+    display: none;
+}
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}

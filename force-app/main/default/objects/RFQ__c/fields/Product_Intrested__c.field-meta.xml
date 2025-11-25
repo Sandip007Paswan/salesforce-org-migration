@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Intrested__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Intrested</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Excavator Swing Frame</fullName>
+                <default>false</default>
+                <label>Excavator Swing Frame</label>
+            </value>
+            <value>
+                <fullName>Submersible Pump Impeller Casing</fullName>
+                <default>false</default>
+                <label>Submersible Pump Impeller Casing</label>
+            </value>
+            <value>
+                <fullName>Flywheel Housing</fullName>
+                <default>false</default>
+                <label>Flywheel Housing</label>
+            </value>
+            <value>
+                <fullName>Concrete Mixer Drum Flange</fullName>
+                <default>false</default>
+                <label>Concrete Mixer Drum Flange</label>
+            </value>
+            <value>
+                <fullName>Gate Valve Body</fullName>
+                <default>false</default>
+                <label>Gate Valve Body</label>
+            </value>
+            <value>
+                <fullName>Ball Valve Housing</fullName>
+                <default>false</default>
+                <label>Ball Valve Housing</label>
+            </value>
+            <value>
+                <fullName>Butterfly Valve Disc</fullName>
+                <default>false</default>
+                <label>Butterfly Valve Disc</label>
+            </value>
+            <value>
+                <fullName>Globe Valve Bonnet</fullName>
+                <default>false</default>
+                <label>Globe Valve Bonnet</label>
+            </value>
+            <value>
+                <fullName>Pressure Relief Valve Body</fullName>
+                <default>false</default>
+                <label>Pressure Relief Valve Body</label>
+            </value>
+            <value>
+                <fullName>Air Compressor Cylinder Block</fullName>
+                <default>false</default>
+                <label>Air Compressor Cylinder Block</label>
+            </value>
+            <value>
+                <fullName>Compressor Valve Plate</fullName>
+                <default>false</default>
+                <label>Compressor Valve Plate</label>
+            </value>
+            <value>
+                <fullName>Compressor Crankcase</fullName>
+                <default>false</default>
+                <label>Compressor Crankcase</label>
+            </value>
+            <value>
+                <fullName>Intercooler Cover for Compressor</fullName>
+                <default>false</default>
+                <label>Intercooler Cover for Compressor</label>
+            </value>
+            <value>
+                <fullName>Piston Head for Air Compressor</fullName>
+                <default>false</default>
+                <label>Piston Head for Air Compressor</label>
+            </value>
+            <value>
+                <fullName>Hydraulic Motor Casing</fullName>
+                <default>false</default>
+                <label>Hydraulic Motor Casing</label>
+            </value>
+            <value>
+                <fullName>Hydraulic Cylinder End Cap</fullName>
+                <default>false</default>
+                <label>Hydraulic Cylinder End Cap</label>
+            </value>
+            <value>
+                <fullName>Hydraulic Manifold Block</fullName>
+                <default>false</default>
+                <label>Hydraulic Manifold Block</label>
+            </value>
+            <value>
+                <fullName>Hydraulic Gear Housing</fullName>
+                <default>false</default>
+                <label>Hydraulic Gear Housing</label>
+            </value>
+            <value>
+                <fullName>Hydraulic Reservoir End Plate</fullName>
+                <default>false</default>
+                <label>Hydraulic Reservoir End Plate</label>
+            </value>
+            <value>
+                <fullName>Gear Pump Cover</fullName>
+                <default>false</default>
+                <label>Gear Pump Cover</label>
+            </value>
+            <value>
+                <fullName>Brake Drum Housing</fullName>
+                <default>false</default>
+                <label>Brake Drum Housing</label>
+            </value>
+            <value>
+                <fullName>Backhoe Arm Coupling</fullName>
+                <default>false</default>
+                <label>Backhoe Arm Coupling</label>
+            </value>
+            <value>
+                <fullName>Loader Arm End Bracket</fullName>
+                <default>false</default>
+                <label>Loader Arm End Bracket</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

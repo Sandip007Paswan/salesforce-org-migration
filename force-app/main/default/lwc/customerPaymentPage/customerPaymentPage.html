@@ -1,0 +1,105 @@
+<template>
+
+    <template if:true={payments}>
+        <template if:true={payments.length}>
+             <div class="slds-box slds-theme_shade slds-m-around_medium">
+            <h1 class="slds-text-heading_medium">{propertyHeader}</h1>
+        </div>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <template for:each={payments} for:item="payment">
+                    <div key={payment.Id}
+                        class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <div class="slds-card slds-m-around_small slds-p-around_medium">
+                            <header class="slds-card__header slds-media slds-media_center">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <span class="slds-text-heading_small">{payment.emiLabel}</span>
+                                    </h2>
+                                </div>
+                            </header>
+ 
+                            <!-- Inside card body -->
+                            <div class="slds-card__body slds-card__body_inner uniform-card-body">
+                                <!-- Property Info -->
+                                <template if:true={payment.Opportunity__r.Property__r}>
+                                    <p><strong>🏠 Property:</strong> {payment.Opportunity__r.Property__r.Name}</p>
+                                </template>
+                                <p><strong>📄 Opportunity:</strong> {payment.Opportunity__r.Name}</p>
+                                <p><strong>💰 Amount:</strong> ₹{payment.Amount__c}</p>
+                                <p>
+                                    <strong>📌 Status:</strong>
+                                    <span class={payment.badgeClass}>&nbsp;{payment.Status__c}</span>
+                                </p>
+                                <p><strong>📅 Due Date:</strong> {payment.Payment_Due_Date__c}</p>
+
+                                <!-- Upload Section -->
+                                <template if:true={payment.showUpload}>
+                                    <div class="slds-box slds-theme_shade slds-m-top_medium">
+                                        <p><strong>📤 Upload Receipt:</strong></p>
+                                        <template if:true={payment.selectedFiles}>
+                                            <ul class="slds-list_dotted">
+                                                <template for:each={payment.selectedFiles} for:item="file"
+                                                    for:index="index">
+                                                    <li key={file.name}
+                                                        class="slds-grid slds-grid_align-spread slds-m-bottom_xx-small">
+                                                        <span>{file.name}</span>
+                                                        <lightning-button-icon icon-name="utility:close"
+                                                            alternative-text="Remove" title="Remove"
+                                                            data-payment-id={payment.Id} data-index={index}
+                                                            onclick={handleRemoveFile}>
+                                                        </lightning-button-icon>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </template>
+                                        <lightning-input type="file" label="Select Receipt" onchange={handleFileSelect}
+                                            data-payment-id={payment.Id} multiple>
+                                        </lightning-input>
+                                        <lightning-button label="Upload Receipt" variant="brand"
+                                            onclick={handleFileUpload} data-payment-id={payment.Id}
+                                            class="slds-m-top_small">
+                                        </lightning-button>
+                                    </div>
+                                </template>
+
+                                <!-- ✅ Show confirmation for Paid or Under Review -->
+                                <template if:true={payment.isPaidOrUnderReview}>
+                                    <div class="slds-m-top_medium slds-text-color_success">
+                                        ✅ Receipt Uploaded
+                                    </div>
+                                </template>
+
+                                <!-- Uploaded Files -->
+                                <template if:true={payment.uploadedFiles}>
+                                    <div class="slds-m-top_small">
+                                        <p><strong>📂 Uploaded Files:</strong></p>
+                                        <ul class="slds-list_dotted">
+                                            <template for:each={payment.uploadedFiles} for:item="file">
+                                                <li key={file.name}>
+                                                    <a href={file.downloadUrl} target="_blank">{file.name}</a><br />
+                                                    <small>Uploaded on: {file.uploadedOn}</small>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={noPayments}>
+            <div class="slds-box slds-theme_alert-texture slds-theme_error slds-m-around_medium">
+                ⚠️ No payment record found for your account.
+            </div>
+        </template>
+    </template>
+
+    <template if:true={uploadMessage}>
+        <div class="slds-box slds-theme_alert-texture slds-theme_success slds-m-around_medium">
+            {uploadMessage}
+        </div>
+    </template>
+</template>

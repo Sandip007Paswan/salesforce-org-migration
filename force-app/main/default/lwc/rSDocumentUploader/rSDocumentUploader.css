@@ -1,0 +1,180 @@
+/* Container padding for consistent spacing */
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+/* Style for success messages */
+.slds-text-color_success {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* Center the message and button in the "KYC Exists" card */
+.kyc-exists-container {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Style the "View KYC Record" button */
+.kyc-exists-button {
+    margin-top: 1rem;
+}
+
+/* Add spacing above the Create KYC and Finish buttons */
+.create-kyc-button,
+.finish-button {
+    margin-top: 1.5rem;
+}
+
+/* Responsive max-width and styling for cards */
+.lightning-card {
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lightning-card > .slds-card__header {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.lightning-card p {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* KYC wrapper layout and background */
+.kyc-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+}
+
+/* KYC form container */
+.kyc-form {
+    flex: 1 1 60%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* KYC animation container */
+.kyc-animation {
+    flex: 1 1 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: #f9f9f9;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Floating animation */
+.floating-animation {
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-animation img {
+    width: 100%;
+    max-width: 280px;
+    opacity: 0.95;
+    transition: transform 0.3s;
+}
+
+.floating-animation img:hover {
+    transform: scale(1.03);
+}
+
+.floating-animation p {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    color: #343a40;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Form field spacing */
+lightning-input,
+lightning-combobox,
+lightning-textarea,
+lightning-file-upload {
+    margin-bottom: 1rem;
+}
+
+/* Stepper card */
+.stepper-card {
+    display: flex;
+    justify-content: space-around;
+    background: #f4f6f9;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.75rem 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.step span {
+    display: inline-block;
+    background: #d8dde6;
+    color: #333;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.step.completed {
+   
+    color: white;
+    border-color: #2ecc71;
+}
+.kyc-completed-card {
+    border: 2px solid #2ecc71;
+    border-radius: 1rem;
+    background: #f6fffa;
+    box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+}
+
+.stepper-card .step.completed span {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

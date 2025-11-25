@@ -1,0 +1,87 @@
+<template>
+    <div class="slds-grid slds-wrap kyc-wrapper">
+
+        <!-- Form Section -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 kyc-form">
+            <lightning-card title="Upload Your Documents" class="slds-p-around_large">
+                <div class="slds-p-around_medium slds-grid slds-wrap slds-gutters_small">
+
+                    <!-- Document Type -->
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-combobox name="documentType" label="Document Type" value={documentType}
+                            options={documentOptions} onchange={handleTypeChange} class={documentTypeClass}>
+                        </lightning-combobox>
+                    </div>
+
+                    <!-- Expiry Date (conditional) -->
+                    <template if:true={isExpiryRequired}>
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-input type="date" label="Expiry Date" value={expiryDate}
+                                onchange={handleDateChange} class={expiryDateClass}>
+                            </lightning-input>
+                        </div>
+                    </template>
+
+                    <!-- File Upload -->
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning-file-upload label="Upload File" name="fileUploader" accept=".pdf,.jpg,.jpeg,.png"
+                            record-id={userId} onuploadfinished={handleUploadFinished}>
+                        </lightning-file-upload>
+                    </div>
+                </div>
+            </lightning-card>
+
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="slds-p-around_medium slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Uploaded Document List -->
+            <template if:true={documents}>
+                <lightning-card title="Your Uploaded Documents" class="slds-p-around_large">
+                    <div class="slds-p-around_medium">
+                      <template for:each={documents} for:item="doc">
+    <div key={doc.Id} class="slds-box slds-m-bottom_small slds-grid slds-wrap slds-gutters_small">
+        <!-- Thumbnail Preview -->
+        <div class="slds-col slds-size_1-of-4">
+            <template if:true={doc.previewUrl}>
+                <a href={doc.downloadUrl} target="_blank">
+                    <img src={doc.previewUrl} alt="Preview" style="width: 100%; border-radius: 4px;" />
+                </a>
+            </template>
+            <template if:false={doc.previewUrl}>
+                <lightning-icon icon-name="doctype:unknown" size="medium"></lightning-icon>
+            </template>
+        </div>
+
+        <!-- Metadata -->
+        <div class="slds-col slds-size_3-of-4">
+            <p><strong>{doc.Name}</strong></p>
+            <p>Type: {doc.Document_Type__c}</p>
+            <!-- <p>Expiry: {doc.Expiry_Date__c}</p>
+            <p>Uploaded: {doc.CreatedDate}</p> -->
+            <div class="slds-text-align_right slds-m-top_small">
+                <a href={doc.downloadUrl} target="_blank">
+                    <lightning-icon icon-name="utility:download" alternative-text="Download" size="x-small"></lightning-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>
+
+                    </div>
+                </lightning-card>
+            </template>
+        </div>
+
+        <!-- Animated Visual Section -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-align_absolute-center kyc-animation">
+            <div class="floating-animation slds-text-align_center">
+<img src={logoUrl} alt="Upload Illustration" style="width: 120px;" />
+                <p class="slds-text-heading_small slds-m-top_small">Securely upload your documents</p>
+            </div>
+        </div>
+    </div>
+</template>
